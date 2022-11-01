@@ -3,13 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Direct;
+import InDirect.*;
 import java.util.Scanner;
 public class NumericalAnalysis {
     static int n;
-   static double arr[][] , x[];
-
+    static double arr[][] , x[];
+    public static Scanner read = new Scanner (System.in);
     public static void main(String[] args) {
-        Scanner read = new Scanner (System.in);
         System.out.println("Enter the number of equations :");
         n = read.nextInt();
         arr = new double [n][n+1];
@@ -30,8 +30,8 @@ public class NumericalAnalysis {
         
         System.out.println("[1] gauess elimination");
         System.out.println("[2] cramer");
-        System.out.println("[3] gauess elimination");
-        System.out.println("[4] Jacobi");
+        System.out.println("[4] GaussSeidel");
+        System.out.println("[5] Jacobi");
     }
     public static void method(int select){
          switch(select)
@@ -47,7 +47,13 @@ public class NumericalAnalysis {
                 break;
             }
             case 4 :{
-                
+                GaussSeidel solution = new GaussSeidel(n, arr);
+                solution.Solve();
+            }
+            case 5 : 
+            {
+                Jacobi solution = new Jacobi(n, arr);
+                solution.Solve();
             }
     }
     }
