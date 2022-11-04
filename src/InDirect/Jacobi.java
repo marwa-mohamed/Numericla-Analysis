@@ -4,7 +4,6 @@
  */
 package InDirect;
 import static Direct.NumericalAnalysis.read;
-import java.util.Scanner;
 
 /**
  *
