@@ -17,6 +17,7 @@ public class Jacobi {
    private double right_side[];
    private double initial_values[];
    private double solution[]; 
+   private double old_values[];
    
    public Jacobi(int size , double matrix[][]){
        this.size = size;
@@ -24,6 +25,7 @@ public class Jacobi {
        right_side = new double[size];
        initial_values = new double[size];
        solution = new double[size];
+       old_values = new double[size];
        for(int i=0;i<size;i++) right_side[i] = matrix[i][size];
    }
    
@@ -36,17 +38,19 @@ public class Jacobi {
    public void Solve(){
          PreSolve();
          while(numberOfIterations > 0){
+         for(int i=0;i<size;i++)
+         old_values[i] = initial_values[i];
          for (int i = 0; i < size; i++) {
-         solution[i] = (right_side[i] / matrix[i][i]);
+         initial_values[i] = (right_side[i] / matrix[i][i]);
          for (int j = 0; j < size; j++) {
             if (j == i)
                continue;
-            solution[i] = solution[i] - ((matrix[i][j] / matrix[i][i]) * initial_values[j]);
-            initial_values[i] = solution[i];
+            initial_values[i] = initial_values[i] - ((matrix[i][j] / matrix[i][i]) * old_values[j]);
          }
-            System.out.println("x : " + (i+1) + " = " + (solution[i]) + " ");
+            System.out.println("x : " + (i+1) + " = " + (old_values[i]) + " ");
       }
             System.out.println("");
+            numberOfIterations--;
         }
    }
    

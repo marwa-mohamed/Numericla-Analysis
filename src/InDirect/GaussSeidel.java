@@ -13,7 +13,7 @@ public class GaussSeidel {
    private int size;
    private double tmp;
    private double flag;
-   private int accuracy;
+   private double accuracy;
    private double matrix[][];
    private double right_side[];
    private double initial_values[];
@@ -44,11 +44,12 @@ public class GaussSeidel {
        System.out.println("Enter initial values:");
         for(int i = 0;i<size;i++) initial_values[i] = read.nextDouble();
         System.out.println("Enter accuracy of solution:");
-        accuracy = read.nextInt();
+        accuracy = read.nextDouble();
    }
     public void Solve(){
         PreSolve();
-        Pivotisation();
+     Pivotisation();
+        
         do                          
     {
         for (int i=0;i<size;i++)               
@@ -65,8 +66,9 @@ public class GaussSeidel {
                 flag++;
             System.out.println(solution[i] + "   ");
         }
+        System.out.println("   ");
        // count++;   
-    }while(flag<size);       
+    }while(flag<size); 
     }
    
 }

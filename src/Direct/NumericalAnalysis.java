@@ -18,7 +18,7 @@ public class NumericalAnalysis {
         System.out.println("Enter the elements of matrix by row:");
         for (int i = 0; i < n ; i++)
             for (int j = 0; j <= n; j++)
-                arr[i][j] = read.nextFloat();
+                arr[i][j] = read.nextDouble();
         
         System.out.println("select the way to solve :");
         menu();
