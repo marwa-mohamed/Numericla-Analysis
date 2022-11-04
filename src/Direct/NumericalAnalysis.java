@@ -43,12 +43,15 @@ public class NumericalAnalysis {
     private static void menu2()
     {
         System.out.println("[1] Bisection");
+        System.out.println("[2] Flase Position");
+        System.out.println("select the way to solve :");
+        
         int select = read.nextInt();
         method2(select);
    
     }
     
-    private static void method1(int select){
+    public static void method1(int select){
         System.out.println("Enter the number of equations :");
         n = read.nextInt();
         arr = new double [n][n+1];
@@ -57,28 +60,9 @@ public class NumericalAnalysis {
         System.out.println("Enter the elements of matrix by row:");
         for (int i = 0; i < n ; i++)
             for (int j = 0; j <= n; j++)
-<<<<<<< HEAD
                 arr[i][j] = read.nextDouble();
         
-        System.out.println("select the way to solve :");
-        menu();
-        int select = read.nextInt();
-        method(select);
-    }
-    
-    public static void menu(){
-        
-        System.out.println("[1] gauess elimination");
-        System.out.println("[2] cramer");
-        System.out.println("[4] GaussSeidel");
-        System.out.println("[5] Jacobi");
-    }
-    public static void method(int select){
-         switch(select)
-=======
-                arr[i][j] = read.nextFloat();
         switch(select)
->>>>>>> 464fa8a04ecdafd1ae286bf353f81f9c5fbe307f
         {
             case 1:
             {
@@ -114,21 +98,27 @@ public class NumericalAnalysis {
         degree++;
         double[] coefficient = new double[degree];
         System.out.println("Enter the coefficients from the lowest power"
-                + "to the heighst :");
-                
+                + " to the heighst :");      
         for (int i = 0; i < degree; i++) 
             coefficient[i] = read.nextDouble();
+        
+        System.out.println("Enter the period that you search for the root in :");
+        System.out.print("The starting value : ");
+        double start = read.nextDouble();
+        System.out.print("The Ending value : ");
+        double end = read.nextDouble();
         
         switch(select)
         {
             case 1:
             {          
-            System.out.println("Enter the period that you search for the root in :");
-            System.out.print("The starting value : ");
-            double start = read.nextDouble();
-            System.out.print("The Ending value : ");
-            double end = read.nextDouble();
                 Bisection solution = new Bisection(degree,coefficient,start,end);
+                solution.solve();
+                break;
+            }
+            case 2:
+            {
+                FalsePosition solution = new FalsePosition (degree,coefficient,start,end);
                 solution.solve();
                 break;
             }
