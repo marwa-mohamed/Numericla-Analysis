@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Direct;
 public class GaussElimination {
    public int size = 0;
@@ -15,7 +12,7 @@ public class GaussElimination {
         solution = x;
     }
    
-   public void Pivotisation()
+   private void Pivotisation()
    {
       for (int i = 0; i < size; i++)                    
         for (int k = i+1; k < size; k++)
@@ -28,7 +25,7 @@ public class GaussElimination {
                 }
    }
    
-   public void perform_elimination()
+   private void perform_elimination()
    {
     for (int i = 0;i < size - 1; i++)            //loop to perform the gauss elimination
         for (int k = i+1 ;k < size; k++)
@@ -39,7 +36,7 @@ public class GaussElimination {
             }
    }
    
-   public void back_substitution()
+   private void back_substitution()
    {
        for (int i = size-1; i >= 0; i--)                //back-substitution
        {                        //x is an array whose values correspond to the values of x,y,z..
@@ -51,21 +48,12 @@ public class GaussElimination {
        }
    }
    
-   public void print()
+   public void Solve()
    {
-        for (int i = 0; i < size; i++)            //print the new matrix
-        {
-            for (int j = 0; j <= size; j++)
-            System.out.printf("%16.4f \t" , a[i][j]);
-         System.out.println();
-        }    
-        
-   }
-   
-   public void print_sol()
-   {
+        Pivotisation();        
+        perform_elimination();
+        back_substitution();
         for (int i = 0; i < size; i++)            //print the final solution
            System.out.printf("%16.4f \n" , solution[i]);
- 
    }
 }
